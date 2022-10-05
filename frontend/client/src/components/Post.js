@@ -78,7 +78,7 @@ const Post = (props) => {
       });
   };
   return (
-    <div>
+    <div className="post">
       {(auth.userId === post.userId || auth.admin) && (
         <>
           <FontAwesomeIcon icon={faTrashCan} onClick={(e) => erasePost(e)} />
@@ -89,9 +89,7 @@ const Post = (props) => {
         <>
           <div className="pseudo">{post.pseudo}</div>
           <div className="message">{post.message}</div>
-          <div className="picture-container">
-            <img src={post.picture} alt={post.id} />
-          </div>
+          <img src={post.picture} alt={post.id} />
         </>
       ) : (
         <>

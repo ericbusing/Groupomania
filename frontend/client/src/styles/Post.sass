@@ -1,20 +1,32 @@
-.post-container
+*
+    border: 1px black solid
+.post
     display: flex
     flex-direction: column
     justify-content: center
-    width: 50%
-.picture-container
-    width: 150px
+    border-radius: 10px
+    width: 85%
+    background-color: #FFD7D7
+    margin-bottom: 20px
+    .pseudo
+        font-weight: bold
+        color: #4E5166
     img
-        object-fit: contain
-        width: 100%
-.post-form
-    .image
         display: flex
-        justify-content: center
-        width: 150px
+        align-self: center
+        object-fit: contain
+        width: 20%
+
+    .post-form
+        .image
+            display: flex
+            justify-content: center
+            width: 150px
         img
             display: flex
             justify-content: center
             object-fit: contain
             width: 50%
+    .icones
+        display: flex
+        flex-direction: row

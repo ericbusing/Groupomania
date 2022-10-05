@@ -31,7 +31,7 @@ const Home = (props) => {
   }, [isLoad, auth]);
 
   return (
-    <div>
+    <div className="home">
       <Navigation />
       <CreatePost auth={auth} setIsLoad={setIsLoad} />
       {posts.map((post, i) => (

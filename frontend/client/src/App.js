@@ -27,7 +27,7 @@ const App = () => {
     }
   }, [connected]);
   return (
-    <div>
+    <div className="app">
       {!connected ? (
         <Routes>
           <Route

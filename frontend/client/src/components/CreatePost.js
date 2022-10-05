@@ -53,7 +53,7 @@ const CreatePost = (props) => {
   };
 
   return (
-    <div>
+    <div className="createPost">
       <form className="post-form" onSubmit={(e) => send(e)}>
         <input
           type="text"
