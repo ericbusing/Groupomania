@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
       throw new Error("No email address");
     }
 
-    const compare = bcrypt.compare(req.body.password, user.password);
+    const compare = await bcrypt.compare(req.body.password, user.password);
     if (!compare) {
       throw new Error("Wrong password !");
     }
@@ -106,6 +106,7 @@ exports.updateUser = async (req, res) => {
     res.status(500).json({ err });
   }
 };
+
 // Permet de supprimer l'user.
 exports.deleteUser = async (req, res) => {
   try {

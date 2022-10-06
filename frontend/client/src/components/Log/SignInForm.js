@@ -56,6 +56,7 @@ const SignInForm = (props) => {
           name="password"
           id="password"
           onChange={(e) => setPassword(e.target.value)}
+          required
           value={password}
         />
         <div className="password error"></div>

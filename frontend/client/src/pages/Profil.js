@@ -29,7 +29,7 @@ const Profil = (props) => {
   }, [isLoad, auth]);
 
   return (
-    <div>
+    <div className="home">
       <NavigationProfil />
       {posts.map((post, i) => (
         <Post key={i} post={post} auth={auth} setIsLoad={setIsLoad} />

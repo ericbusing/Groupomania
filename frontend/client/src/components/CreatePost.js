@@ -6,7 +6,11 @@ import axios from "axios";
 const CreatePost = (props) => {
   const [message, setMessage] = useState();
   const [images, setImages] = useState(false);
-  const { auth, setIsLoad } = props;
+  const { auth, setIsLoad, show, close } = props;
+
+  if (!show) {
+    return null;
+  }
 
   const send = (e) => {
     e.preventDefault();
@@ -28,6 +32,7 @@ const CreatePost = (props) => {
         })
         .then(function (res) {
           setIsLoad(true);
+          close();
         })
         .catch(function (err) {
           console.log(err);
@@ -45,6 +50,7 @@ const CreatePost = (props) => {
         })
         .then(function (res) {
           setIsLoad(true);
+          close();
         })
         .catch(function (err) {
           console.log(err);
@@ -79,6 +85,9 @@ const CreatePost = (props) => {
             placeholder="Envoyer"
           />
         </div>
+        <button type="button" onClick={() => close()}>
+          Annuler
+        </button>
       </form>
     </div>
   );

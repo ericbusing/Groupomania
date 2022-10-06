@@ -1,13 +1,30 @@
+@import "./animations/animations"
+
 *
-    border: 1px black solid
+    // border: 1px black solid
 .post
     display: flex
     flex-direction: column
     justify-content: center
-    border-radius: 10px
+    border-radius: 0px 30px 30px
     width: 85%
-    background-color: #FFD7D7
+    border: 1px #ffd7d0 solid
     margin-bottom: 20px
+    box-shadow: 10px 10px 10px 3px (#2f2f2f75 / 74%)
+    animation: appear 1s linear ease-in-out
+    animation: fadein 1s linear
+    .trashEdit
+        display: flex
+        justify-content: flex-end
+        .trash, .edit
+            cursor: pointer
+            color: #ffd7d0
+        .trash
+            &:hover
+                color: #FD2D01
+        .edit
+            &:hover
+                color: #4E5166
     .pseudo
         font-weight: bold
         color: #4E5166
@@ -27,6 +44,13 @@
             justify-content: center
             object-fit: contain
             width: 50%
-    .icones
+    .likeDislike
         display: flex
-        flex-direction: row
+        justify-content: center
+        gap: 30px
+        font-size: 20px
+        .like, .dislike
+            cursor: pointer
+            color: #ffd7d0
+            &:hover
+                animation: bounce-top 1s ease 0s 1 normal none

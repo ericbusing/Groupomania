@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Post.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faPencil } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashCan,
+  faPencil,
+  faThumbsUp,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
 import FormData from "form-data";
 import axios from "axios";
 import { modifyPost, deletePost } from "../utils/path";
 
 const Post = (props) => {
-  const { post, auth, setIsLoad } = props;
+  const { post, auth, setIsLoad, isLoad } = props;
   const [modify, setModify] = useState(false);
   const [changePicture, setChangePicture] = useState(false);
   const [message, setMessage] = useState(post.message);
@@ -63,6 +68,16 @@ const Post = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (isLoad) {
+      setMessage(post.message);
+    }
+  }, [isLoad, post.message]);
+
+  const handleChange = (e) => {
+    setMessage(e.target.value);
+  };
+
   const erasePost = () => {
     axios
       .delete(deletePost + post._id, {
@@ -77,13 +92,25 @@ const Post = (props) => {
         console.log(err);
       });
   };
+
   return (
     <div className="post">
       {(auth.userId === post.userId || auth.admin) && (
-        <>
-          <FontAwesomeIcon icon={faTrashCan} onClick={(e) => erasePost(e)} />
-          <FontAwesomeIcon icon={faPencil} onClick={() => setModify(!modify)} />
-        </>
+        <div className="trashEdit">
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            onClick={(e) => erasePost(e)}
+            className="trash"
+          />
+          <FontAwesomeIcon
+            icon={faPencil}
+            onClick={() => {
+              setModify(!modify);
+              setIsLoad(true);
+            }}
+            className="edit"
+          />
+        </div>
       )}
       {!modify ? (
         <>
@@ -100,7 +127,7 @@ const Post = (props) => {
               className="post-input"
               placeholder="Commence ton post"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => handleChange(e)}
             />
             <div className="image">
               <img src={images} alt="" />
@@ -126,6 +153,10 @@ const Post = (props) => {
           </form>
         </>
       )}
+      <div className="likeDislike">
+        <FontAwesomeIcon icon={faThumbsUp} className="like" />
+        <FontAwesomeIcon icon={faThumbsDown} className="dislike" />
+      </div>
     </div>
   );
 };

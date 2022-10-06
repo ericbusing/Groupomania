@@ -9,7 +9,12 @@ import CreatePost from "../components/CreatePost";
 const Home = (props) => {
   const [posts, setPosts] = useState([]);
   const [isLoad, setIsLoad] = useState(true);
+  const [showCreate, setShowCreate] = useState(false);
   const { auth } = props;
+
+  const handleToggleCreate = () => {
+    setShowCreate(!showCreate);
+  };
 
   useEffect(() => {
     if (isLoad) {
@@ -33,9 +38,23 @@ const Home = (props) => {
   return (
     <div className="home">
       <Navigation />
-      <CreatePost auth={auth} setIsLoad={setIsLoad} />
+      <button type="button" onClick={handleToggleCreate}>
+        Créer un post
+      </button>
+      <CreatePost
+        auth={auth}
+        setIsLoad={setIsLoad}
+        show={showCreate}
+        close={handleToggleCreate}
+      />
       {posts.map((post, i) => (
-        <Post key={i} post={post} auth={auth} setIsLoad={setIsLoad} />
+        <Post
+          key={i}
+          post={post}
+          auth={auth}
+          setIsLoad={setIsLoad}
+          isLoad={isLoad}
+        />
       ))}
     </div>
   );
