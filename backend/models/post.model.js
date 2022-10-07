@@ -6,6 +6,7 @@ const postSchema = new mongoose.Schema({
   message: { type: String, trim: true, maxlength: 500 },
   picture: { type: String },
   likers: { type: [String] },
+  date: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("post", postSchema);

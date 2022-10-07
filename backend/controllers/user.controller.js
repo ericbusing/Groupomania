@@ -26,6 +26,7 @@ exports.signup = async (req, res, next) => {
       pseudo: req.body.pseudo,
       email: req.body.email,
       password: hash,
+      bio: "",
     });
     user.save();
     res.status(201).json({ message: "User has been created !" });
@@ -53,6 +54,7 @@ exports.login = async (req, res, next) => {
     return res.status(200).json({
       userId: user.id,
       admin: user.admin,
+      pseudo: user.pseudo,
       token: jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, {
         expiresIn: "24h",
       }),
@@ -78,6 +80,7 @@ exports.me = async (req, res, next) => {
     return res.status(200).json({
       userId: user.id,
       admin: user.admin,
+      pseudo: user.pseudo,
       token: jwt.sign({ userId: user.id }, process.env.TOKEN_SECRET, {
         expiresIn: "24h",
       }),

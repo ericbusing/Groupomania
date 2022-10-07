@@ -18,6 +18,15 @@ const Post = (props) => {
   const [message, setMessage] = useState(post.message);
   const [images, setImages] = useState(post.picture);
 
+  const day = new Date(post.date);
+  const finalDay = day.getDate();
+
+  const month = new Date(post.date);
+  const finalMonth = month.getMonth() + 1;
+
+  const year = new Date(post.date);
+  const finalYear = year.getFullYear();
+
   const updatePost = (e) => {
     e.preventDefault();
     if (changePicture) {
@@ -115,6 +124,9 @@ const Post = (props) => {
       {!modify ? (
         <>
           <div className="pseudo">{post.pseudo}</div>
+          <div>
+            {finalDay}/{finalMonth}/{finalYear}
+          </div>
           <div className="message">{post.message}</div>
           <img src={post.picture} alt={post.id} />
         </>

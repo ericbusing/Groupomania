@@ -70,6 +70,7 @@ const SignUpForm = () => {
               id="pseudo"
               onChange={(e) => setPseudo(e.target.value)}
               value={pseudo}
+              required
             />
             <div className="pseudo error"></div>
             <br />
@@ -81,6 +82,7 @@ const SignUpForm = () => {
               id="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              required
             />
             <div className="email error"></div>
             <br />
@@ -92,6 +94,7 @@ const SignUpForm = () => {
               id="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              required
             />
             <br />
             <br />

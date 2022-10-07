@@ -32,6 +32,7 @@ const CreatePost = (props) => {
         })
         .then(function (res) {
           setIsLoad(true);
+          setImages(false);
           close();
         })
         .catch(function (err) {
@@ -66,7 +67,6 @@ const CreatePost = (props) => {
           id="post"
           className="post-input"
           placeholder="Commence ton post"
-          // value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
         <div className="image-submit">

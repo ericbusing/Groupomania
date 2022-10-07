@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
     const userId = decodedToken.userId;
     const admin = decodedToken.admin;
+    const pseudo = decodedToken.pseudo;
 
     if (admin) {
       next();

@@ -8,3 +8,4 @@ export const createPost = local + "api/post";
 export const modifyPost = local + "api/post/";
 export const deletePost = local + "api/post/";
 export const getAllPosts = local + "api/post/getAllPosts";
+export const getOneUser = local + "api/user/profile/";
