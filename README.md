@@ -10,10 +10,10 @@ Voici les étapes à suivre une fois le repo téléchargé :
 
 3) Créer fichier ".env" dans le dossier "config" et copier coller ces éléments :
 
-PORT="8080"  
-CLIENT_URL = "http://localhost:3000/"  
-MONGODB = "mongodb+srv://EricB13:Waltheisen13@cluster0.fs4vrep.mongodb.net/?retryWrites=true&w=majority"  
-TOKEN_SECRET = "0XSsGAT4srFHmRv5ntrCqQDfw3yxAj"  
+ PORT="8080"  
+ CLIENT_URL = "http://localhost:3000/"  
+ MONGODB = "mongodb+srv://EricB13:Waltheisen13@cluster0.fs4vrep.mongodb.net/?retryWrites=true&w=majority"  
+ TOKEN_SECRET = "0XSsGAT4srFHmRv5ntrCqQDfw3yxAj"  
 
 4) Puis saisir "npm start" dans le même terminal.
 
