@@ -47,6 +47,7 @@ const Home = (props) => {
         show={showCreate}
         close={handleToggleCreate}
       />
+      {/*affichage des posts*/}
       {posts.map((post, i) => (
         <Post
           key={i}

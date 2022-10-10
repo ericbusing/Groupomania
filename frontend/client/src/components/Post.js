@@ -48,6 +48,7 @@ const Post = (props) => {
         .then(function (res) {
           setIsLoad(true);
           setModify(false);
+          setChangePicture(false);
         })
         .catch(function (err) {
           console.log(err);
@@ -70,6 +71,7 @@ const Post = (props) => {
         .then(function (res) {
           setIsLoad(true);
           setModify(false);
+          setChangePicture(false);
         })
         .catch(function (err) {
           console.log(err);

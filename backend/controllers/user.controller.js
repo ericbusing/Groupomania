@@ -100,12 +100,13 @@ exports.updateUser = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
-          pseudo: req.body.pseudo,
+          bio: req.body.bio,
         },
       }
     );
-    res.status(200).json({ message: "Pseudo has been updated !" });
+    res.status(200).json({ message: "Bio has been updated !" });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ err });
   }
 };

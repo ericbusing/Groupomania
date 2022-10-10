@@ -2,7 +2,7 @@ import NavigationProfil from "../components/NavigationProfil";
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { getAllPosts, getOneUser } from "../utils/path";
+import { getAllPosts, getOneUser, updateUser } from "../utils/path";
 import "../styles/Profil.sass";
 
 const Profil = (props) => {
@@ -10,7 +10,7 @@ const Profil = (props) => {
   const [posts, setPosts] = useState([]);
   const [bio, setBio] = useState();
   const { auth } = props;
-
+  // Recuperation des posts de l'user.
   useEffect(() => {
     if (isLoad) {
       axios
@@ -29,7 +29,7 @@ const Profil = (props) => {
     }
     setIsLoad(false);
   }, [isLoad, auth]);
-
+  // Recuperation de la bio de l'user.
   useEffect(() => {
     if (isLoad)
       axios
@@ -45,20 +45,34 @@ const Profil = (props) => {
           console.log(err);
         });
   });
-
-  // axios.put();
+  // Modification de la bio de l'user.
+  const submitBio = (e) => {
+    e.preventDefault();
+    axios
+      .put(updateUser + auth.userId, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      })
+      .then(function (res) {
+        setIsLoad(true);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="home">
       <NavigationProfil />
-      <div className="presentation">
-        <h2>{auth.pseudo}</h2>
+      <form className="presentation" onSubmit={(e) => submitBio(e)}>
+        <h2>{auth.pseudo}</h2> {/*affichage du pseudo dans la page profil*/}
         <input
           type="texte"
           className="bio"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
-        ></input>
+        />
         <input
           type="submit"
           name="submit-bio"
@@ -66,8 +80,8 @@ const Profil = (props) => {
           className="submit-bio"
           placeholder="Envoyer la bio"
         />
-      </div>
-
+      </form>
+      {/*affichage des posts de l'user*/}
       {posts.map((post, i) => (
         <Post key={i} post={post} auth={auth} setIsLoad={setIsLoad} />
       ))}
