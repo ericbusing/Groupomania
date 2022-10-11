@@ -10,3 +10,4 @@ export const deletePost = local + "api/post/";
 export const getAllPosts = local + "api/post/getAllPosts";
 export const getOneUser = local + "api/user/profile/";
 export const updateUser = local + "api/user/";
+export const likeDislike = local + "api/post/like/";

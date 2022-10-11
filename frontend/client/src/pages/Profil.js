@@ -46,10 +46,14 @@ const Profil = (props) => {
         });
   });
   // Modification de la bio de l'user.
+  const data = {
+    bio: bio,
+  };
+
   const submitBio = (e) => {
     e.preventDefault();
     axios
-      .put(updateUser + auth.userId, {
+      .put(updateUser + auth.userId, data, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },

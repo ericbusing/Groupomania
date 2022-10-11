@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import FormData from "form-data";
 import axios from "axios";
-import { modifyPost, deletePost } from "../utils/path";
+import { modifyPost, deletePost, likeDislike } from "../utils/path";
 
 const Post = (props) => {
   const { post, auth, setIsLoad, isLoad } = props;
@@ -63,7 +63,6 @@ const Post = (props) => {
           },
           {
             headers: {
-              // "Content-Type": `multipart/form-data`,
               Authorization: `Bearer ${auth.token}`,
             },
           }
@@ -92,6 +91,21 @@ const Post = (props) => {
   const erasePost = () => {
     axios
       .delete(deletePost + post._id, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      })
+      .then(function (res) {
+        setIsLoad(true);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
+
+  const likePost = () => {
+    axios
+      .post(likeDislike + post._id, {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
@@ -168,7 +182,11 @@ const Post = (props) => {
         </>
       )}
       <div className="likeDislike">
-        <FontAwesomeIcon icon={faThumbsUp} className="like" />
+        <FontAwesomeIcon
+          icon={faThumbsUp}
+          className="like"
+          onClick={(e) => likePost(e)}
+        />
         <FontAwesomeIcon icon={faThumbsDown} className="dislike" />
       </div>
     </div>
