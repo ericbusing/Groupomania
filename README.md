@@ -24,11 +24,7 @@ Voici les étapes à suivre une fois le repo téléchargé :
 
 2) Saisir "npm install" dans le terminal frontend.
 
-3) Créer un dossier ".env" et copier coller cet élément :
-
->REACT_APP_API_URL = "http://localhost:5000/"
-
-4) Puis saisir "npm start" dans le même terminal.
+3) Puis saisir "npm start" dans le même terminal.
 
 
 Afin d'avoir un accès Administrateur, voici les log pour celui-ci :
