@@ -6,9 +6,8 @@ const postSchema = new mongoose.Schema({
   message: { type: String, trim: true, maxlength: 500 },
   picture: { type: String },
   likes: { type: Number, defaut: 0 },
-  dislikes: { type: Number, defaut: 0 },
+  unlikes: { type: Number, defaut: 0 },
   usersLiked: { type: [String] },
-  usersDisliked: { type: [String] },
   date: { type: Date, default: Date.now },
 });
 

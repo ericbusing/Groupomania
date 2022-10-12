@@ -5,11 +5,10 @@ import {
   faTrashCan,
   faPencil,
   faThumbsUp,
-  faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
 import FormData from "form-data";
 import axios from "axios";
-import { modifyPost, deletePost, likeDislike } from "../utils/path";
+import { modifyPost, deletePost, likeUnlike } from "../utils/path";
 
 const Post = (props) => {
   const { post, auth, setIsLoad, isLoad } = props;
@@ -26,7 +25,7 @@ const Post = (props) => {
 
   const year = new Date(post.date);
   const finalYear = year.getFullYear();
-
+  // Permet de modifier un post.
   const updatePost = (e) => {
     e.preventDefault();
     if (changePicture) {
@@ -87,7 +86,7 @@ const Post = (props) => {
   const handleChange = (e) => {
     setMessage(e.target.value);
   };
-
+  // Permet de supprimer un post.
   const erasePost = () => {
     axios
       .delete(deletePost + post._id, {
@@ -102,14 +101,43 @@ const Post = (props) => {
         console.log(err);
       });
   };
-
-  const likePost = () => {
+  // Permet de gerer les likes.
+  const like = () => {
     axios
-      .post(likeDislike + post._id, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
+      .post(
+        likeUnlike + post._id,
+        {
+          like: 1,
+          userId: auth.userId,
         },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      )
+      .then(function (res) {
+        setIsLoad(true);
       })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
+  // Permet de gerer les unlikes.
+  const unlike = () => {
+    axios
+      .post(
+        likeUnlike + post._id,
+        {
+          unlike: 1,
+          userId: auth.userId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      )
       .then(function (res) {
         setIsLoad(true);
       })
@@ -181,14 +209,27 @@ const Post = (props) => {
           </form>
         </>
       )}
-      <div className="likeDislike">
-        <FontAwesomeIcon
-          icon={faThumbsUp}
-          className="like"
-          onClick={(e) => likePost(e)}
-        />
-        <FontAwesomeIcon icon={faThumbsDown} className="dislike" />
-      </div>
+      {post.usersLiked.includes(auth.userId) ? (
+        <>
+          <div className="likeUnlike">
+            <FontAwesomeIcon
+              icon={faThumbsUp}
+              className="unlike"
+              onClick={() => unlike()}
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="likeUnlike">
+            <FontAwesomeIcon
+              icon={faThumbsUp}
+              className="like"
+              onClick={() => like()}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

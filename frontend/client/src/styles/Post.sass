@@ -44,13 +44,15 @@
             justify-content: center
             object-fit: contain
             width: 50%
-    .likeDislike
+    .likeUnlike
         display: flex
         justify-content: center
         gap: 30px
         font-size: 20px
-        .like, .dislike
+        .like, .unlike
             cursor: pointer
             color: #ffd7d0
             &:hover
                 animation: bounce-top 1s ease 0s 1 normal none
+        .unlike
+            color: red
