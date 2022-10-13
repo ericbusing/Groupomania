@@ -1,10 +1,8 @@
 @import "./animations/animations"
 
-*
-    // border: 1px black solid
 .post
     display: flex
-    flex-direction: column
+    flex-direction: row
     justify-content: center
     border-radius: 0px 30px 30px
     width: 85%
@@ -13,27 +11,35 @@
     box-shadow: 10px 10px 10px 3px (#2f2f2f75 / 74%)
     animation: appear 1s linear ease-in-out
     animation: fadein 1s linear
-    .trashEdit
+    .data-post
         display: flex
-        justify-content: flex-end
-        .trash, .edit
-            cursor: pointer
-            color: #ffd7d0
-        .trash
+        flex-direction: column
+        .trashEdit
+            display: flex
+            justify-content: flex-end
+            width: max-content
+            .trash, .edit
+                cursor: pointer
+                color: #ffd7d0
+            .trash
             &:hover
                 color: #FD2D01
-        .edit
+            .edit
             &:hover
                 color: #4E5166
-    .pseudo
-        font-weight: bold
-        color: #FD2D01
-    img
+        .pseudo
+            font-weight: bold
+            color: #FD2D01
+    .text-picture
         display: flex
-        align-self: center
-        object-fit: contain
-        width: 20%
-
+        flex-direction: column
+        align-items: center
+        width: inherit
+        img
+            display: flex
+            align-self: center
+            object-fit: contain
+            width: 20%
     .post-form
         .image
             display: flex
@@ -47,12 +53,18 @@
     .likeUnlike
         display: flex
         justify-content: center
-        gap: 30px
         font-size: 20px
-        .like, .unlike
+        width: 10%
+        .like
             cursor: pointer
             color: #ffd7d0
-            &:hover
-                animation: bounce-top 1s ease 0s 1 normal none
+            &:active
+                animation: shadow-drop-center 1s ease 0s 1 normal none
+        h4
+            color: #4E5166
+            margin: 0
         .unlike
-            color: red
+            cursor: pointer
+            color: #FD2D01
+    .pseudo, .date, .trashEdit, .likeUnlike
+        height: max-content

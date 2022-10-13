@@ -2,9 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import SignInForm from "./SignInForm";
 import { register } from "../../utils/path.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/SignIn.sass";
-import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
   const [formSubmit, setFormSubmit] = useState(false);
@@ -15,9 +14,6 @@ const SignUpForm = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const pseudoError = document.querySelector(".pseudo.error");
-    const emailError = document.querySelector(".email.error");
-    const passwordError = document.querySelector(".password.error");
 
     const newProfile = {
       pseudo: pseudo,
@@ -30,9 +26,6 @@ const SignUpForm = () => {
       .then((res) => {
         console.log(res);
         if (res.data.errors) {
-          pseudoError.innerHTML = res.data.errors.pseudo;
-          emailError.innerHTML = res.data.errors.email;
-          passwordError.innerHTML = res.data.errors.password;
         } else {
           setFormSubmit(true);
           navigate("/");
@@ -72,7 +65,6 @@ const SignUpForm = () => {
               value={pseudo}
               required
             />
-            <div className="pseudo error"></div>
             <br />
             <label htmlFor="email">Email</label>
             <br />
@@ -84,7 +76,6 @@ const SignUpForm = () => {
               value={email}
               required
             />
-            <div className="email error"></div>
             <br />
             <label htmlFor="password">Mot de passe</label>
             <br />

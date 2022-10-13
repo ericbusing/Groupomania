@@ -10,6 +10,7 @@ const Profil = (props) => {
   const [posts, setPosts] = useState([]);
   const [bio, setBio] = useState();
   const { auth } = props;
+
   // Recuperation des posts de l'user.
   useEffect(() => {
     if (isLoad) {
@@ -69,26 +70,32 @@ const Profil = (props) => {
   return (
     <div className="home">
       <NavigationProfil />
-      <form className="presentation" onSubmit={(e) => submitBio(e)}>
-        <h2>{auth.pseudo}</h2> {/*affichage du pseudo dans la page profil*/}
-        <input
-          type="texte"
-          className="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-        <input
-          type="submit"
-          name="submit-bio"
-          id="submit-bio"
-          className="submit-bio"
-          placeholder="Envoyer la bio"
-        />
-      </form>
-      {/*affichage des posts de l'user*/}
-      {posts.map((post, i) => (
-        <Post key={i} post={post} auth={auth} setIsLoad={setIsLoad} />
-      ))}
+      <div className="profil-container">
+        <form className="presentation" onSubmit={(e) => submitBio(e)}>
+          <h2>{auth.pseudo}</h2> {/*affichage du pseudo dans la page profil*/}
+          <textarea
+            type="texte"
+            className="bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            maxLength="500"
+          />
+          <button
+            type="submit"
+            name="submit-bio"
+            id="submit-bio"
+            className="submit-bio"
+          >
+            Envoyer
+          </button>
+        </form>
+        <div className="post-profil">
+          {/*affichage des posts de l'user*/}
+          {posts.map((post, i) => (
+            <Post key={i} post={post} auth={auth} setIsLoad={setIsLoad} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

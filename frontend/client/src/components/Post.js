@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashCan,
   faPencil,
-  faThumbsUp,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import FormData from "form-data";
 import axios from "axios";
@@ -148,31 +148,35 @@ const Post = (props) => {
 
   return (
     <div className="post">
-      {(auth.userId === post.userId || auth.admin) && (
-        <div className="trashEdit">
-          <FontAwesomeIcon
-            icon={faTrashCan}
-            onClick={(e) => erasePost(e)}
-            className="trash"
-          />
-          <FontAwesomeIcon
-            icon={faPencil}
-            onClick={() => {
-              setModify(!modify);
-              setIsLoad(true);
-            }}
-            className="edit"
-          />
-        </div>
-      )}
       {!modify ? (
         <>
-          <div className="pseudo">{post.pseudo}</div>
-          <div>
-            {finalDay}/{finalMonth}/{finalYear}
+          <div className="data-post">
+            <div className="pseudo">{post.pseudo}</div>
+            <div className="date">
+              {finalDay}/{finalMonth}/{finalYear}
+            </div>
+            {(auth.userId === post.userId || auth.admin) && (
+              <div className="trashEdit">
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  onClick={(e) => erasePost(e)}
+                  className="trash"
+                />
+                <FontAwesomeIcon
+                  icon={faPencil}
+                  onClick={() => {
+                    setModify(!modify);
+                    setIsLoad(true);
+                  }}
+                  className="edit"
+                />
+              </div>
+            )}
           </div>
-          <div className="message">{post.message}</div>
-          <img src={post.picture} alt={post.id} />
+          <div className="text-picture">
+            <div className="message">{post.message}</div>
+            <img src={post.picture} alt={post.id} />
+          </div>
         </>
       ) : (
         <>
@@ -213,17 +217,18 @@ const Post = (props) => {
         <>
           <div className="likeUnlike">
             <FontAwesomeIcon
-              icon={faThumbsUp}
+              icon={faHeart}
               className="unlike"
               onClick={() => unlike()}
             />
+            <h4>{post.likes}</h4>
           </div>
         </>
       ) : (
         <>
           <div className="likeUnlike">
             <FontAwesomeIcon
-              icon={faThumbsUp}
+              icon={faHeart}
               className="like"
               onClick={() => like()}
             />

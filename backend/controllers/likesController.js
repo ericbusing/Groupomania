@@ -10,8 +10,7 @@ exports.likePost = (req, res) => {
         // Utilisation de l'operateur $inc.
         $inc: { likes: 1 },
         $push: { usersLiked: req.body.userId },
-      },
-      console.log("ici", req.body.userId)
+      }
     )
       .then(() => res.status(200).json({ message: "+1 like !" }))
       .catch((error) => res.status(400).json({ error }));
