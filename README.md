@@ -21,15 +21,9 @@ Voici les étapes à suivre une fois le repo téléchargé :
 
 1. Aller chercher le dossier "client" en saisissant " cd .\client\ " dans le terminal frontend.
 
-<<<<<<< HEAD
-2. Saisir "npm install" dans le terminal frontend.
-=======
 2) Saisir "npm install" dans le terminal frontend.
 
 3) Puis saisir "npm start" dans le même terminal.
->>>>>>> d224db731b4e02d82bcc62e57e0b8325491ab97f
-
-3. Puis saisir "npm start" dans le même terminal.
 
 Afin d'avoir un accès Administrateur, voici les log pour celui-ci :
 
