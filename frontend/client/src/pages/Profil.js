@@ -9,6 +9,7 @@ const Profil = (props) => {
   const [isLoad, setIsLoad] = useState(true);
   const [posts, setPosts] = useState([]);
   const [bio, setBio] = useState();
+  const [showButton, setShowButton] = useState(false);
   const { auth } = props;
 
   // Recuperation des posts de l'user.
@@ -61,6 +62,7 @@ const Profil = (props) => {
       })
       .then(function (res) {
         setIsLoad(true);
+        setShowButton(false);
       })
       .catch(function (err) {
         console.log(err);
@@ -79,15 +81,19 @@ const Profil = (props) => {
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             maxLength="500"
+            onFocus={() => setShowButton(true)}
+            onBlur={() => setShowButton(false)}
           />
-          <button
-            type="submit"
-            name="submit-bio"
-            id="submit-bio"
-            className="submit-bio"
-          >
-            Envoyer
-          </button>
+          {showButton && (
+            <button
+              type="submit"
+              name="submit-bio"
+              id="submit-bio"
+              className="submit-bio"
+            >
+              Envoyer
+            </button>
+          )}
         </form>
         <div className="post-profil">
           {/*affichage des posts de l'user*/}

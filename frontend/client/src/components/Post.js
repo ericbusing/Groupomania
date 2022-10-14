@@ -221,7 +221,6 @@ const Post = (props) => {
               className="unlike"
               onClick={() => unlike()}
             />
-            <h4>{post.likes}</h4>
           </div>
         </>
       ) : (
@@ -235,6 +234,7 @@ const Post = (props) => {
           </div>
         </>
       )}
+      <h4>{post.likes}</h4>
     </div>
   );
 };
