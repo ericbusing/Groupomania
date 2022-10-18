@@ -24,6 +24,6 @@ Voici les étapes à suivre une fois le repo téléchargé :
 
 4. Puis saisir "npm start" dans le même terminal.
 
-Afin d'avoir un accès Administrateur, les log sont présents dans le fichier txt envoyé avec le projet.
+Afin d'avoir un accès Administrateur, les logs sont présents dans le fichier txt envoyé avec le projet.
 
 Bonne installation et bonne journée.
