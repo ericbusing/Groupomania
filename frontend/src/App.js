@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Home from "../src/pages/Home";
-import SignIn from "./components/Log/SignInForm";
-import SignUp from "./components/Log/SignUpForm";
+import SignIn from "./components/Auth/SignInForm";
+import SignUp from "./components/Auth/SignUpForm";
 import { getMe } from "./utils/path";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
