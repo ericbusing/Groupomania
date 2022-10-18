@@ -20,9 +20,7 @@ Voici les étapes à suivre une fois le repo téléchargé :
 
 2. Saisir "npm install" dans le terminal frontend.
 
-3. Créer fichier ".env" dans le fichier frontend et copier coller les éléments présents dans le fichier txt envoyé avec le projet.
-
-4. Puis saisir "npm start" dans le même terminal.
+3. Puis saisir "npm start" dans le même terminal.
 
 Afin d'avoir un accès Administrateur, les logs sont présents dans le fichier txt envoyé avec le projet.
 
