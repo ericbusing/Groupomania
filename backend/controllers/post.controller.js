@@ -122,8 +122,6 @@ module.exports.getAllPostsFromUser = async (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
     const userId = decodedToken.userId;
     const posts = await Post.find({ userId: userId });
-    console.log("userId", userId);
-    console.log(posts);
     res.status(200).json(posts);
   } catch (error) {
     console.log(error);

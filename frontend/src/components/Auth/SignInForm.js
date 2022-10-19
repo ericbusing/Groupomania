@@ -20,7 +20,6 @@ const SignInForm = (props) => {
     axios
       .post(login, profile)
       .then((res) => {
-        console.log(res);
         setConnected(res.data);
         localStorage.setItem("JWT", res.data.token);
       })
@@ -63,7 +62,10 @@ const SignInForm = (props) => {
         <br />
         <input type="submit" value="Se connecter" className="submit-input" />
       </form>
-      <Link to="/register" style={{ textDecoration: "none" }}>
+      <Link
+        to="/register"
+        style={{ textDecoration: "none", height: "max-content" }}
+      >
         <p>S'inscire</p>
       </Link>
     </div>

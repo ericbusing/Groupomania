@@ -24,7 +24,6 @@ const SignUpForm = () => {
     axios
       .post(register, newProfile)
       .then((res) => {
-        console.log(res);
         if (res.data.errors) {
         } else {
           setFormSubmit(true);
@@ -95,7 +94,10 @@ const SignUpForm = () => {
               className="submit-input"
             />
           </form>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link
+            to="/"
+            style={{ textDecoration: "none", height: "max-content" }}
+          >
             <p>Se connecter</p>
           </Link>
         </div>
