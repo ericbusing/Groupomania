@@ -12,7 +12,7 @@ Voici les étapes à suivre une fois le repo téléchargé :
 
 3. Créer fichier ".env" dans le dossier "config", dans le backend, et copier coller les éléments présents dans le fichier txt envoyé avec le projet.
 
-4. Puis saisir "npm start" dans le même terminal.
+4. Puis saisir "nodemon server" dans le même terminal.
 
 - A la racine du dossier front :
 
