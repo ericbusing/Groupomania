@@ -82,7 +82,7 @@ const Profil = (props) => {
             onChange={(e) => setBio(e.target.value)}
             maxLength="500"
             onFocus={() => setShowButton(true)}
-            onBlur={() => setShowButton(false)}
+            // onBlur={() => setShowButton(false)}
           />
           {showButton && (
             <button

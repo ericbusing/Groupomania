@@ -164,11 +164,11 @@ const Post = (props) => {
                 />
                 <FontAwesomeIcon
                   icon={faPencil}
+                  className="edit"
                   onClick={() => {
                     setModify(!modify);
                     setIsLoad(true);
                   }}
-                  className="edit"
                 />
               </div>
             )}
